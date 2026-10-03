@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khalid Olawale Yusuf</title>
+<style>
+:root{--bg:#faf8f4;--fg:#1d1b18;--mut:#6b665e;--line:#e2ddd3;--acc:#8a3b12;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161512;--fg:#ece8df;--mut:#9a948a;--line:#2e2b26;--acc:#e0915f}}
+:root[data-theme="dark"]{--bg:#161512;--fg:#ece8df;--mut:#9a948a;--line:#2e2b26;--acc:#e0915f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.65 Georgia,"Times New Roman",serif}
+main{max-width:640px;margin:0 auto;padding:56px 22px 80px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0 0 4px}
+.li{font-size:.95rem;text-decoration:underline}
+h1{font-size:2rem;font-weight:400;margin:0}
+.sub{color:var(--mut);margin:0 0 28px}
+h2{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:400;border-top:1px solid var(--line);padding-top:18px;margin:44px 0 14px}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+.row{display:flex;gap:16px;justify-content:space-between;margin:0 0 18px}
+.row b{font-weight:400}.when{color:var(--mut);font-size:.9rem;white-space:nowrap}
+.row p{margin:2px 0 0;color:var(--mut);font-size:.95rem}
+.tags span{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:1px 12px;margin:0 6px 8px 0;font-size:.85rem}
+.upd{font-size:.9rem;color:var(--mut)}
+footer{margin-top:56px;color:var(--mut);font-size:.8rem}
+@media (max-width:480px){.row{flex-direction:column;gap:0}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+/* ===== EDIT ONLY THIS BLOCK TO UPDATE THE SITE ===== */
+const DATA = {
+  name: "Khalid Olawale Yusuf",
+  tagline: "Mechanical engineering student and builder in Abuja, Nigeria.",
+  about: "I am a 400-level Mechanical Engineering student at Ahmadu Bello University, Zaria. I work across engineering and software, and I am building toward remote AI and technical roles. I have a strong mathematics background, including representing my state at the Mathematics Olympiad.",
+  updated: "October 2026",
+  now: [
+    "Interning at Vonos Automobiles",
+    "Studying cybersecurity"
+  ],
+  experience: [
+    {role:"Junior Engineer", org:"ETCO Integrated Facility Management Company", when:"Completed", note:"Engineering work in facility management, Nigeria."},
+    {role:"Intern", org:"Vonos Automobiles", when:"Ongoing", note:""}
+  ],
+  education: [
+    {role:"B.Eng. Mechanical Engineering", org:"Ahmadu Bello University, Zaria", when:"In progress (400 Level)", note:""}
+  ],
+  projects: [
+    {role:"Automated fabric-cutting CNC", org:"Design collaboration", when:"2026", note:"Designing a CNC machine to automate cutting and measuring for tailors."}
+  ],
+  certifications: [
+    {role:"Cybersecurity Architecture", org:"IBM, via Coursera", when:"Oct 2026", note:"", href:"https://coursera.org/verify/GOGQ42TWWVAB"}
+  ],
+  skills: ["SolidWorks CAD","Data analysis","Mathematics","Mechanical design","Problem solving","Cybersecurity architecture"],
+  links: [
+    {label:"Email", href:"mailto:you@example.com"},
+    {label:"LinkedIn", href:"https://www.linkedin.com/in/khalid-yusuf-35b456415"},
+    {label:"GitHub", href:"#"}
+  ]
+};
+/* ===== END EDITABLE BLOCK ===== */
+
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const rows=a=>a.map(x=>`<div class="row"><div><b>${esc(x.role)}</b>, ${esc(x.org)}${x.note?`<p>${esc(x.note)}</p>`:""}</div><div class="when">${esc(x.when)}</div></div>`).join("");
+document.getElementById("app").innerHTML=`
+<header class="top"><h1>${esc(DATA.name)}</h1><a class="li" href="${esc(DATA.links.find(l=>l.label==="LinkedIn").href)}" target="_blank" rel="noopener">LinkedIn</a></header>
+<p class="sub">${esc(DATA.tagline)}</p>
+<p>${esc(DATA.about)}</p>
+<h2>Now <span class="upd">· updated ${esc(DATA.updated)}</span></h2>
+<ul>${DATA.now.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>
+<h2>Experience</h2>${rows(DATA.experience)}
+<h2>Projects</h2>${rows(DATA.projects)}
+<h2>Education</h2>${rows(DATA.education)}
+<h2>Certifications</h2>${DATA.certifications.map(c=>`<div class="row"><div><b>${esc(c.role)}</b>, ${esc(c.org)} · <a href="${esc(c.href)}">Verify</a></div><div class="when">${esc(c.when)}</div></div>`).join("")}
+<h2>Skills</h2><div class="tags">${DATA.skills.map(s=>`<span>${esc(s)}</span>`).join("")}</div>
+<h2>Contact</h2><p>${DATA.links.map(l=>`<a href="${esc(l.href)}">${esc(l.label)}</a>`).join(" · ")}</p>
+<footer>© ${new Date().getFullYear()} ${esc(DATA.name)}</footer>`;
+</script>
+</body>
+</html>
