@@ -6,8 +6,8 @@
 <title>Khalid Olawale Yusuf</title>
 <style>
 :root{--bg:#faf8f4;--fg:#1d1b18;--mut:#6b665e;--line:#e2ddd3;--acc:#8a3b12;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161512;--fg:#ece8df;--mut:#9a948a;--line:#2e2b26;--acc:#e0915f}}
-:root[data-theme="dark"]{--bg:#161512;--fg:#ece8df;--mut:#9a948a;--line:#2e2b26;--acc:#e0915f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161512;--fg:#ece8df;--mut:#9a948a;--line:#2e2b26;--acc:#4a7fe0}}
+:root[data-theme="dark"]{--bg:#161512;--fg:#ece8df;--mut:#9a948a;--line:#2e2b26;--acc:#4a7fe0}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.65 Georgia,"Times New Roman",serif}
 main{max-width:640px;margin:0 auto;padding:56px 22px 80px}
@@ -96,6 +96,7 @@ const tb=document.getElementById("themeBtn");
 const paint=()=>{tb.innerHTML=curTheme()==="dark"?SUN:MOON};
 paint();
 tb.addEventListener("click",()=>{const n=curTheme()==="dark"?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem("theme",n)}catch(e){}paint()});
+document.querySelectorAll('a[href^="mailto:"]').forEach(a=>a.addEventListener("click",e=>{if(matchMedia("(hover:hover) and (pointer:fine)").matches){e.preventDefault();window.open("https://mail.google.com/mail/?view=cm&fs=1&to="+encodeURIComponent(a.getAttribute("href").slice(7)),"_blank","noopener")}}));
 document.querySelectorAll(".certbtn").forEach(b=>b.addEventListener("click",()=>{const r=b.closest(".row").nextElementSibling;const o=r.classList.toggle("open");b.setAttribute("aria-expanded",o)}));
 </script>
 </body>
